@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>필라테스 단어테스트</title>
+        <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>    
+        <!-- <link rel="stylesheet" href="/Test.css"> -->
+    </head>
+    <style>
+        a{
+            font-size: 20px;
+        }
+
+        button{
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            border: 1px solid gray;
+            border-radius: 20px;
+            margin-bottom: 3px;
+            background-color: rgb(248, 248, 248);
+        }
+
+        table{
+            border: 1px solid gray;
+            width: 100%;
+            border-spacing: 0px;
+        }
+
+        table th{
+            border: 1px solid gray;
+        }
+
+        table td{
+            border: 1px solid rgb(213, 213, 213);
+            font-size: 20px;
+            color: rgb(42, 42, 42);
+        }
+
+        table td input{
+            width: 99%;
+            height: 30px;
+            font-size: 20px;
+            border: none;
+            color: black;
+        }
+    </style>
+    <body>
+        <h1>필라테스 단어 테스트</h1>
+        <div>
+            <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        </div>
+        <div>
+            <a style="float: left;">문제수:</a><a id="testCount"></a><br />
+            <a style="float: left;">정답수:</a><a id="testTrue">0</a><br />
+            <a style="float: left;">오답수:</a><a id="testFalse">0</a><br />
+        </div>
+        <button id="answerChk" onclick="answerChk()">정답확인</button>
+
+        <div id="displayDiv">
+            
+        </div>
+    </body>
+    <script>
+        var reader = new FileReader();
+        var excelFileData = null;
+
+        var inputElement = document.getElementById('inputExcelRead');
+        inputElement.addEventListener('change', function() {
+            reader.readAsArrayBuffer(event.target.files[0]);
+        }, false);
+
+        reader.onload = function (e) {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, { type: "array" });
+
+            var sheetName = workbook.SheetNames;
+            var sheet = workbook.Sheets[sheetName];
+            excelFileData = XLSX.utils.sheet_to_html(sheet);
+            
+            var element = document.getElementById('displayDiv');
+            element.innerHTML = excelFileData;
+
+            var Len = (workbook.Strings.length)/3
+
+            for (var i=2; i<Len+1; i++) {
+                var min = Math.ceil(1);
+                var max = Math.floor(4);
+                var random = Math.floor(Math.random() * (max - min)) + min;
+                
+                if(random === 1) {
+                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-A'+i)[0].attributes[2].nodeValue +'">')
+                }else if(random === 2) {
+                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-B'+i)[0].attributes[2].nodeValue +'">')
+                }else if(random === 3) {
+                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-C'+i)[0].attributes[2].nodeValue +'">')
+                }
+            }
+
+            parseInt($('#testCount').text((workbook.Strings.length)/3 - 1))
+            
+            
+        };
+
+    function answerChk() {
+        $('#testTrue').text(0)
+        $('#testFalse').text(0)
+        for(var i=2; i< parseInt($('#testCount').text())+2;i++) {
+
+            if($('#'+i).val()  === $('#'+i)[0].className) {
+                $('#'+i).css('color','blue')
+               
+                $('#testTrue').text(parseInt($('#testTrue').text())+1)
+            }else {
+                $('#'+i).css('color','red')
+                if($('#'+i).val().indexOf('/') == -1) {
+                    $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)
+                }
+                
+                $('#testFalse').text(parseInt($('#testFalse').text())+1)
+            }     
+        }
+        alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
+    }   
+    </script>
+</html>
