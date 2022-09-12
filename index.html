@@ -56,10 +56,11 @@
             font-size: 15px;
             border: none;
             color: black;
+            
         }
     </style>
     <body>
-        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.1</h2>
+        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.2</h2>
         <div>
             <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
         </div>
@@ -112,7 +113,25 @@
 
             parseInt($('#testCount').text((workbook.Strings.length)/3 - 1))
             
-            
+            $('#sjs-A1').css('font-weight', 600);
+            $('#sjs-B1').css('font-weight', 600);
+            $('#sjs-C1').css('font-weight', 600);
+
+            $('#sjs-A1').css('padding-top', '6px');
+            $('#sjs-B1').css('padding-top', '6px');
+            $('#sjs-C1').css('padding-top', '6px');
+
+            $('#sjs-A1').css('padding-bottom', '6px');
+            $('#sjs-B1').css('padding-bottom', '6px');
+            $('#sjs-C1').css('padding-bottom', '6px');
+
+            $('#sjs-A1').css('padding-left', '3px');
+            $('#sjs-B1').css('padding-left', '3px');
+            $('#sjs-C1').css('padding-left', '3px');
+
+            $('#sjs-A1').css('background-color', 'rgb(231, 222, 253)');
+            $('#sjs-B1').css('background-color', 'rgb(231, 222, 253)');
+            $('#sjs-C1').css('background-color', 'rgb(231, 222, 253)');
         };
 
     function answerChk() {
