@@ -13,11 +13,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <script type="text/javascript" src="data.json"></script>
         <!-- <link rel="stylesheet" href="/Test.css"> -->
     </head>
     <style>
         body{
             font-family: 'Noto Sans KR', sans-serif;
+            padding: 0 auto;
+            margin: 0 auto;
         }
 
         a{
@@ -29,9 +33,10 @@
             height: 40px;
             font-size: 15px;
             border: 1px solid gray;
-            border-radius: 20px;
+            border-radius: 5px;
             margin-bottom: 3px;
             background-color: rgb(248, 248, 248);
+            margin-top: 10px;
         }
 
         table{
@@ -58,6 +63,60 @@
             color: black;
             
         }
+
+        .partBtn1, .partBtn2, .partBtn3, .partBtn4, .partBtn5, .partBtn6, .partBtn7, .partBtn8, .partBtn9, .partBtn10, .partBtn11, .partBtn12{
+            width: 32%;
+            padding: 0 auto;
+            padding-left: 0 auto;
+            background-color: rgb(246, 243, 252);
+            border: 1px solid rgb(252, 233, 246);
+            height: 32px;
+            font-size: 12px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            box-shadow: 2px 1px 1px rgb(224, 224, 224);
+            color: rgb(73, 73, 73);
+        }
+        .partBtn13, .partBtn14{
+            width: 49%;
+            padding: 0 auto;
+            padding-left: 0 auto;
+            background-color: rgb(246, 243, 252);
+            border: 1px solid rgb(252, 233, 246);
+            height: 32px;
+            font-size: 12px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            box-shadow: 2px 1px 1px rgb(224, 224, 224);
+        }
+
+        #problemSolving{
+            width: 100%;
+            padding: 0 auto;
+            padding-left: 0 auto;
+            background-color: rgb(231, 222, 253);
+            border: 1px solid rgb(252, 233, 246);
+            height: 32px;
+            font-size: 12px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            box-shadow: 2px 1px 1px rgb(224, 224, 224);
+        }
+
+        #answerChk{
+            width: 100%;
+            padding: 0 auto;
+            padding-left: 0 auto;
+            background-color: rgb(231, 222, 253);
+            border: 1px solid rgb(252, 233, 246);
+            height: 32px;
+            font-size: 12px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            box-shadow: 2px 1px 1px rgb(224, 224, 224);
+        }
+
+        
     </style>
     <body>
         <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.3</h2>
@@ -69,22 +128,57 @@
             <a style="float: left;">정답수:</a><a id="testTrue" style="color: blue;">0</a><br />
             <a style="float: left;">오답수:</a><a id="testFalse" style="color: red;">0</a><br />
         </div>
+        <br />
         <div>
-            <button>몸통뼈 (경추부)</button>
-            <button>몸통뼈 (흉추,요추,천추)</button>
-            <button>상지뼈 (상완골)</button>
-            <button>상지뼈2 (견갑골1)</button>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="partBtn1" onclick="part1Select()">몸통뼈 (경추부)</button>
+                <button class="partBtn2" onclick="part2Select()">몸통뼈 (흉추,요추,천추)</button>
+                <button class="partBtn3" onclick="part3Select()">상지뼈 (상완골)</button>
+            </div>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="partBtn4" onclick="part4Select()">상지뼈2 (견갑골1)</button>
+                <button class="partBtn5" onclick="part5Select()">상지뼈2(견갑골2)</button>
+                <button class="partBtn6" onclick="part6Select()">상지뼈3 (하완)</button>
+            </div>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="partBtn7" onclick="part7Select()">상지뼈4 (손목)</button>
+                <button class="partBtn8" onclick="part8Select()">상지뼈5 (손목및손가락)</button>
+                <button class="partBtn9" onclick="part9Select()">하지뼈1 (골반1)</button>
+            </div>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="partBtn10" onclick="part10Select()">하지뼈2 (골반2)</button>
+                <button class="partBtn11" onclick="part11Select()">하지뼈3 (대퇴골1)</button>
+                <button class="partBtn12" onclick="part12Select()">하지뼈4 (대퇴골2)</button>
+            </div>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="partBtn13" onclick="part13Select()">하지뼈5(경골,비골,슬개골)</button>
+                <button class="partBtn14" onclick="part14Select()">하지뼈6(발목및손가락)</button>
+            </div>
             <br />
-            <button>문제출제</button>
+            <button id="problemSolving" onclick="problemSolving()">문제출제</button>
             
         </div>
-        <button id="answerChk" onclick="answerChk()">정답확인</button>
-
+        
         <div id="displayDiv">
             
         </div>
+        <button id="answerChk" onclick="answerChk()">정답확인</button>
     </body>
     <script>
+
+        $.getJSON("data.json", function(data){
+            console.log(data); // Prints: Harry
+            // console.log(data.age); // Prints: 14
+            console.log(_.uniqBy(data, 'category'));
+            console.log(_.shuffle(data));
+
+        }).fail(function(){
+            console.log("An error has occurred.");
+        });
+
+
+
+
         var reader = new FileReader();
         var excelFileData = null;
 
@@ -162,6 +256,167 @@
             }     
         }
         alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
-    }   
+    }
+
+    //문제출제
+    function problemSolving() {
+        alert( arr.map(x => console.log(x)));
+    }
+
+    //몸통뼈 (경추부)
+    const arr = [];
+    function part1Select() {
+        if(_.find(arr, {'num': 1})) {
+            _.remove(arr, (x) => x.num === 1);
+            $('.partBtn1').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:1, category:'몸통뼈 (경추부)'})
+            $('.partBtn1').css('background-color', 'rgb(231, 222, 253)');
+        }
+        
+    }
+
+    //몸통뼈 (흉추,요추,천추)
+    function part2Select() {
+        if(_.find(arr, {'num': 2})) {
+            _.remove(arr, (x) => x.num === 2);
+            $('.partBtn2').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:2, category:'몸통뼈 (흉추,요추,천추)'})
+            $('.partBtn2').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈 (상완골)
+    function part3Select() {
+        if(_.find(arr, {'num': 3})) {
+            _.remove(arr, (x) => x.num === 3);
+            $('.partBtn3').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:3, category:'상지뼈 (상완골)'})
+            $('.partBtn3').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈2 (견갑골1)
+    function part4Select() {
+        if(_.find(arr, {'num': 4})) {
+            _.remove(arr, (x) => x.num === 4);
+            $('.partBtn4').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:4, category:'상지뼈2 (견갑골1)'})
+            $('.partBtn4').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈2(견갑골2)
+    function part5Select() {
+        if(_.find(arr, {'num': 5})) {
+            _.remove(arr, (x) => x.num === 5);
+            $('.partBtn5').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:5, category:'상지뼈2 (견갑골2)'})
+            $('.partBtn5').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈3 (하완)
+    function part6Select() {
+        if(_.find(arr, {'num': 6})) {
+            _.remove(arr, (x) => x.num === 6);
+            $('.partBtn6').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:6, category:'상지뼈3 (하완)'})
+            $('.partBtn6').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈4 (손목)
+    function part7Select() {
+        if(_.find(arr, {'num': 7})) {
+            _.remove(arr, (x) => x.num === 7);
+            $('.partBtn7').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:7, category:'상지뼈4 (손목)'})
+            $('.partBtn7').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //상지뼈5 (손목및손가락)
+    function part8Select() {
+        if(_.find(arr, {'num': 8})) {
+            _.remove(arr, (x) => x.num === 8);
+            $('.partBtn8').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:8, category:'상지뼈5 (손목및손가락)'})
+            $('.partBtn8').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //하지뼈1 (골반1)
+    function part9Select() {
+        if(_.find(arr, {'num': 9})) {
+            _.remove(arr, (x) => x.num === 9);
+            $('.partBtn9').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:9, category:'하지뼈1 (골반1)'})
+            $('.partBtn9').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //하지뼈2 (골반2)
+    function part10Select() {
+        if(_.find(arr, {'num': 10})) {
+            _.remove(arr, (x) => x.num === 10);
+            $('.partBtn10').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:10, category:'하지뼈2 (골반2)'})
+            $('.partBtn10').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //하지뼈3 (대퇴골1)
+    function part11Select() {
+        if(_.find(arr, {'num': 11})) {
+            _.remove(arr, (x) => x.num === 11);
+            $('.partBtn11').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:11, category:'하지뼈3 (대퇴골1)'})
+            $('.partBtn11').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+    
+    //하지뼈4 (대퇴골2)
+    function part12Select() {
+        if(_.find(arr, {'num': 12})) {
+            _.remove(arr, (x) => x.num === 12);
+            $('.partBtn12').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:12, category:'하지뼈4 (대퇴골2)'})
+            $('.partBtn12').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //하지뼈5(경골,비골,슬개골)
+    function part13Select() {
+        if(_.find(arr, {'num': 13})) {
+            _.remove(arr, (x) => x.num === 13);
+            $('.partBtn13').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:13, category:'하지뼈5(경골,비골,슬개골)'})
+            $('.partBtn13').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
+
+    //하지뼈6(발목및손가락)
+    function part14Select() {
+        if(_.find(arr, {'num': 14})) {
+            _.remove(arr, (x) => x.num === 14);
+            $('.partBtn14').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            arr.push({num:14, category:'하지뼈6(발목및손가락)'})
+            $('.partBtn14').css('background-color', 'rgb(231, 222, 253)');
+        }
+    }
     </script>
 </html>

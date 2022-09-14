@@ -1,3 +1,758 @@
-{
-    
-}
+[
+    {
+     "englishWord": "cervical vertebrae",
+     "newWord": "목뼈",
+     "oldWord": "경추",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "atlas",
+     "newWord": "고리뼈",
+     "oldWord": "환추",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "axis",
+     "newWord": "중쇠뼈",
+     "oldWord": "축추",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "vertebral body",
+     "newWord": "척추뼈몸통",
+     "oldWord": "추체",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "transverse process",
+     "newWord": "가로돌기",
+     "oldWord": "횡돌기",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "spinous process",
+     "newWord": "가시돌기",
+     "oldWord": "극돌기",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "vertebral foramen",
+     "newWord": "척추뼈구멍",
+     "oldWord": "추공",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "vertebral arch",
+     "newWord": "척추뼈고리",
+     "oldWord": "추궁",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "foramen",
+     "newWord": "구멍",
+     "oldWord": "공",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "process",
+     "newWord": "돌기",
+     "oldWord": "돌기",
+     "category": "몸통뼈 (경추부)"
+    },
+    {
+     "englishWord": "thoracic vertebrae",
+     "newWord": "등뼈",
+     "oldWord": "흉추",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "sternum",
+     "newWord": "복장뼈",
+     "oldWord": "흉골",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "manubrium",
+     "newWord": "복장뼈자루",
+     "oldWord": "흉골병",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "xiphoid process",
+     "newWord": "칼돌기",
+     "oldWord": "검상돌기",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "costal facet",
+     "newWord": "갈비오목",
+     "oldWord": "늑골와",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "rib cage",
+     "newWord": "가슴우리",
+     "oldWord": "흉곽",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "lumbar vertebrae",
+     "newWord": "허리뼈",
+     "oldWord": "요추",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "sacrum ",
+     "newWord": "엉치뼈",
+     "oldWord": "천골",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "coccyx",
+     "newWord": "꼬리뼈",
+     "oldWord": "미골",
+     "category": "몸통뼈 (흉추,요추,천추)"
+    },
+    {
+     "englishWord": "humerus",
+     "newWord": "위팔뼈",
+     "oldWord": "상완골",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "greater tubercle",
+     "newWord": "큰결절",
+     "oldWord": "대결절",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "lesser tubercle",
+     "newWord": "작은결절",
+     "oldWord": "소결절",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "tubercle ",
+     "newWord": "결절",
+     "oldWord": "결절",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "deltoid tuberosity ",
+     "newWord": "세모근거친면",
+     "oldWord": "삼각근조면",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "tuberosity ",
+     "newWord": "거친면",
+     "oldWord": "조면",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "head of humerus ",
+     "newWord": "위팔뼈머리",
+     "oldWord": "상완골두",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "intertubercular groove ",
+     "newWord": "결절사이고랑",
+     "oldWord": "결절간구",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "lateral epicondyle",
+     "newWord": "가쪽위관절융기",
+     "oldWord": "외측상과",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "medial epicondyle",
+     "newWord": "안쪽위관절융기",
+     "oldWord": "내측상과",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "trochlea of humerus",
+     "newWord": "위팔뼈도르래",
+     "oldWord": "상완골활차",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "condyle of humerus",
+     "newWord": "위팔뼈융기",
+     "oldWord": "상완골과",
+     "category": "상지뼈 (상완골)"
+    },
+    {
+     "englishWord": "scpula",
+     "newWord": "어깨뼈",
+     "oldWord": "견갑골",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "superior angle",
+     "newWord": "위각",
+     "oldWord": "상각",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "inferior angle",
+     "newWord": "아래각",
+     "oldWord": "하각",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "superior border",
+     "newWord": "위모서리",
+     "oldWord": "상연",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "lateral border",
+     "newWord": "가쪽모서리",
+     "oldWord": "외측연",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "medial border",
+     "newWord": "안쪽모서리",
+     "oldWord": "내측연",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "glenoid cavity (fossa)",
+     "newWord": "접시오목",
+     "oldWord": "관절와",
+     "category": "상지뼈2 (견갑골1)"
+    },
+    {
+     "englishWord": "scapulr spine",
+     "newWord": "어깨뼈가시",
+     "oldWord": "견갑극",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "acromion",
+     "newWord": "봉우리",
+     "oldWord": "견봉",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "coracoid process",
+     "newWord": "부리돌기",
+     "oldWord": "오훼돌기",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "suprglenoid tubercle",
+     "newWord": "오목위결절",
+     "oldWord": "관절상결절",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "infraglenoid tubercle",
+     "newWord": "오목아래결절",
+     "oldWord": "관절하결절",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "supraspinatus fossa",
+     "newWord": "어깨뼈가시위오목",
+     "oldWord": "극상와",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "infraspinatus fossa",
+     "newWord": "어깨뼈가시아래오목",
+     "oldWord": "극하와",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "subscapularis fossa",
+     "newWord": "어깨뼈밑오목",
+     "oldWord": "견갑하와",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "clavicle",
+     "newWord": "빗장뼈",
+     "oldWord": "쇄골",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "acromial end",
+     "newWord": "봉우리끝",
+     "oldWord": "견봉단",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "sternal end",
+     "newWord": "빗장뼈끝",
+     "oldWord": "쇄골단",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "costal tuberosity",
+     "newWord": "갈비뼈거친면",
+     "oldWord": "늑골조면",
+     "category": "상지뼈2(견갑골2)"
+    },
+    {
+     "englishWord": "radius",
+     "newWord": "노뼈",
+     "oldWord": "요골",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "head of radius",
+     "newWord": "노뼈머리",
+     "oldWord": "요골두",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "redial tuberosity",
+     "newWord": "노뼈거친면",
+     "oldWord": "요골조면",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "styloid process of radius",
+     "newWord": "붓돌기",
+     "oldWord": "경상돌기(요골)",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "ulna",
+     "newWord": "자뼈",
+     "oldWord": "척골",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "trochlear notch",
+     "newWord": "도르래패임",
+     "oldWord": "활차절흔",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "coronoid process",
+     "newWord": "갈고리돌기",
+     "oldWord": "구상돌기",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "ulna tuberosity",
+     "newWord": "자뼈거친면",
+     "oldWord": "척골조면",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "styloid process of ulna",
+     "newWord": "붓돌기",
+     "oldWord": "경상돌기(척골)",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "olecranon",
+     "newWord": "팔꿈치머리",
+     "oldWord": "주두",
+     "category": "상지뼈3 (하완)"
+    },
+    {
+     "englishWord": "carpals",
+     "newWord": "손목뼈",
+     "oldWord": "수근골",
+     "category": "상지뼈4 (손목)"
+    },
+    {
+     "englishWord": "pisiform",
+     "newWord": "콩알뼈",
+     "oldWord": "두상골",
+     "category": "상지뼈4 (손목)"
+    },
+    {
+     "englishWord": "triquetrum",
+     "newWord": "세모뼈",
+     "oldWord": "삼각골",
+     "category": "상지뼈4 (손목)"
+    },
+    {
+     "englishWord": "lunate",
+     "newWord": "반달뼈",
+     "oldWord": "월상골",
+     "category": "상지뼈4 (손목)"
+    },
+    {
+     "englishWord": "scaphoid",
+     "newWord": "손배뼈",
+     "oldWord": "주상골",
+     "category": "상지뼈4 (손목)"
+    },
+    {
+     "englishWord": "trapezium",
+     "newWord": "큰마름뼈",
+     "oldWord": "대능형골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "trapezoid",
+     "newWord": "작은마름뼈",
+     "oldWord": "소능형골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "capitate",
+     "newWord": "알머리뼈",
+     "oldWord": "유두골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "hamate",
+     "newWord": "갈고리뼈",
+     "oldWord": "유구골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "metacarpal",
+     "newWord": "손허리뼈",
+     "oldWord": "중수근골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "proximal phalange",
+     "newWord": "첫마디뼈",
+     "oldWord": "기절골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "middle phalange",
+     "newWord": "중간마디뼈",
+     "oldWord": "중절골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "distal phalange",
+     "newWord": "끝마디뼈",
+     "oldWord": "말절골",
+     "category": "상지뼈5 (손목및손가락)"
+    },
+    {
+     "englishWord": "pelvis",
+     "newWord": "골반",
+     "oldWord": "골반",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "acetabulum",
+     "newWord": "절구",
+     "oldWord": "관골구",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "ilium",
+     "newWord": "엉덩뼈",
+     "oldWord": "장골",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "anterior gluteal line",
+     "newWord": "앞볼기근선",
+     "oldWord": "전둔근선",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "posterior gluteal line",
+     "newWord": "뒷볼기근선",
+     "oldWord": "후둔근선",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "inferior gluteal line​",
+     "newWord": "아래볼기근선",
+     "oldWord": "하둔근선",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "iliac crest",
+     "newWord": "엉덩뼈능선",
+     "oldWord": "장골능",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "iliac fossa",
+     "newWord": "엉덩뼈오목",
+     "oldWord": "장골와",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "anterior superior iliac spine",
+     "newWord": "위앞엉덩뼈가시",
+     "oldWord": "전상장골극",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "anterior inferior iliac spine",
+     "newWord": "위아래엉덩뼈가시",
+     "oldWord": "전하장골극",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "posterior superior iliac spine ",
+     "newWord": "위뒤엉덩뼈가시",
+     "oldWord": "후상장골극",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "sacroiliac joint",
+     "newWord": "엉치엉덩관절",
+     "oldWord": "천장관절",
+     "category": "하지뼈1 (골반1)"
+    },
+    {
+     "englishWord": "ischium",
+     "newWord": "궁둥뼈",
+     "oldWord": "좌골",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "ischial tuberosity",
+     "newWord": "궁둥뼈결절",
+     "oldWord": "좌골결절",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "pubis",
+     "newWord": "두덩뼈",
+     "oldWord": "치골",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "pubic symphysis",
+     "newWord": "두덩결합",
+     "oldWord": "치골결합",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "obturator foramen",
+     "newWord": "폐쇄구멍",
+     "oldWord": "폐쇄공",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "superior pubic ramus",
+     "newWord": "두덩뼈위가지",
+     "oldWord": "치골상지",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "inferior pubic ramus",
+     "newWord": "두덩뼈아래가지",
+     "oldWord": "치골하지",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "pubic tubercle",
+     "newWord": "두덩뼈결절",
+     "oldWord": "치골결절",
+     "category": "하지뼈2 (골반2)"
+    },
+    {
+     "englishWord": "femur",
+     "newWord": "넙다리뼈",
+     "oldWord": "대퇴골",
+     "category": "하지뼈3 (대퇴골1)"
+    },
+    {
+     "englishWord": "greater trochanter",
+     "newWord": "큰돌기",
+     "oldWord": "대전자",
+     "category": "하지뼈3 (대퇴골1)"
+    },
+    {
+     "englishWord": "lesser trochanter",
+     "newWord": "작은돌기",
+     "oldWord": "소전자",
+     "category": "하지뼈3 (대퇴골1)"
+    },
+    {
+     "englishWord": "pectineal line",
+     "newWord": "두덩근선",
+     "oldWord": "치골근선",
+     "category": "하지뼈3 (대퇴골1)"
+    },
+    {
+     "englishWord": "gluteal tuberosity",
+     "newWord": "볼기근거친면",
+     "oldWord": "둔근조면",
+     "category": "하지뼈3 (대퇴골1)"
+    },
+    {
+     "englishWord": "linea aspera",
+     "newWord": "거친면",
+     "oldWord": "조선",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "adductor tubercle",
+     "newWord": "모음근결절",
+     "oldWord": "내전근결절",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "lateral epicondyle",
+     "newWord": "가쪽위관절융기",
+     "oldWord": "외측상과",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "medial epicondyle",
+     "newWord": "안쪽위관절융기",
+     "oldWord": "내측상과",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "condyle of femur",
+     "newWord": "넙다리뼈관절융기",
+     "oldWord": "대퇴골과",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "head of femur",
+     "newWord": "넙다리뼈머리",
+     "oldWord": "대퇴골두",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "neck of femur",
+     "newWord": "넙다리뼈목",
+     "oldWord": "대퇴골경",
+     "category": "하지뼈4 (대퇴골2)"
+    },
+    {
+     "englishWord": "tibia",
+     "newWord": "정강뼈",
+     "oldWord": "경골",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "fibula",
+     "newWord": "종아리뼈",
+     "oldWord": "비골",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "lateral condyle",
+     "newWord": "가쪽관절융기",
+     "oldWord": "외측과",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "medial condyle ",
+     "newWord": "안쪽관절융기",
+     "oldWord": "내측과",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "tibial tuberosity",
+     "newWord": "정강뼈거친면",
+     "oldWord": "경골조면",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "lateral malleolus",
+     "newWord": "가쪽복사",
+     "oldWord": "외과",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "medial malleous",
+     "newWord": "안쪽복사",
+     "oldWord": "내과",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "fibula head",
+     "newWord": "종아리뼈머리",
+     "oldWord": "비골두",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "patella",
+     "newWord": "무릎덮개뼈",
+     "oldWord": "슬개골",
+     "category": "하지뼈5(경골,비골,슬개골)"
+    },
+    {
+     "englishWord": "tarsal",
+     "newWord": "발목뼈",
+     "oldWord": "족근골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "talus",
+     "newWord": "목말뼈",
+     "oldWord": "거골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "calcaneous",
+     "newWord": "발꿈치뼈",
+     "oldWord": "종골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "cuneiforms",
+     "newWord": "쐐기뼈",
+     "oldWord": "설상골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "navicular",
+     "newWord": "발배뼈",
+     "oldWord": "주상골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "cuboid",
+     "newWord": "입방뼈",
+     "oldWord": "입방골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "calcaneal tuberosity",
+     "newWord": "발꿈치조면",
+     "oldWord": "종골조면",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "metatarsal",
+     "newWord": "발허리뼈",
+     "oldWord": "중족골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "tuberosity of 5th metatarsal",
+     "newWord": "다섯째발허리뼈거친면",
+     "oldWord": "제5중족골조면",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "distal phalange",
+     "newWord": "끝마디뼈",
+     "oldWord": "말절골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "middle phalange",
+     "newWord": "중간마디뼈",
+     "oldWord": "중절골",
+     "category": "하지뼈6(발목및손가락)"
+    },
+    {
+     "englishWord": "proximal phalange",
+     "newWord": "첫마디뼈",
+     "oldWord": "기절골",
+     "category": "하지뼈6(발목및손가락)"
+    }
+   ]
