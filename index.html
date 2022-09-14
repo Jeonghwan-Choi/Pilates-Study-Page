@@ -104,7 +104,7 @@
             var element = document.getElementById('displayDiv');
             element.innerHTML = excelFileData;
 
-            var Len = (workbook.Strings.length)/3
+            var Len = (workbook.Strings.length)/3 +4
 
             for (var i=2; i<Len+5; i++) {
                 var min = Math.ceil(1);
@@ -120,7 +120,7 @@
                 }
             }
 
-            parseInt($('#testCount').text((workbook.Strings.length)/3 + 3))
+            parseInt($('#testCount').text((workbook.Strings.length)/3 + 8))
             
             $('#sjs-A1').css('font-weight', 600);
             $('#sjs-B1').css('font-weight', 600);
