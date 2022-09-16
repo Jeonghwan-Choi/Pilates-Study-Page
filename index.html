@@ -67,7 +67,7 @@
             
         }
 
-        .partBtn1, .partBtn2, .partBtn3, .partBtn4, .partBtn5, .partBtn6, .partBtn7, .partBtn8, .partBtn9, .partBtn10, .partBtn11, .partBtn12{
+        .partBtn1, .partBtn2, .partBtn3, .partBtn4, .partBtn5, .partBtn6, .partBtn7, .partBtn8, .partBtn9, .partBtn10, .partBtn11, .partBtn12, .randomBtn, .lev1Btn, .lev2Btn{
             width: 32%;
             padding: 0 auto;
             padding-left: 0 auto;
@@ -99,13 +99,13 @@
             width: 100%;
             padding: 0 auto;
             padding-left: 0 auto;
-            background-color: rgb(231, 222, 253);
-            border: 1px solid rgb(252, 233, 246);
+            background-color: rgb(224, 224, 224);
+            border: none;
             height: 32px;
             font-size: 12px;
             margin-bottom: 4px;
             border-radius: 3px;
-            box-shadow: 2px 1px 1px rgb(224, 224, 224);
+            box-shadow: 2px 1px 1px rgb(206, 206, 206);
         }
 
         #answerChk{
@@ -126,7 +126,8 @@
     <body>
         <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.4</h2>
         <div>
-            <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+            <!-- 기능해제 -->
+            <!-- <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> -->
         </div>
         <div>
             <a style="float: left;">문제수:</a><a id="testCount"></a><br />
@@ -160,92 +161,110 @@
                 <button class="partBtn14" onclick="part14Select()">하지뼈6(발목및손가락)</button>
             </div>
             <br />
-            <button id="problemSolving" onclick="problemSolving()" >문제출제</button>
+            <div style="width: 100%; text-align: center; padding: 0 auto;">
+                <button class="randomBtn" onclick="randomClick()" >랜덤섞기</button>
+                <button class="lev1Btn" >레벨1</button>
+                <button class="lev2Btn" >레벨2</button>
+            </div>
+
+            <br />
+            <button id="problemSolving" onclick="problemSolving()" >문제준비중..</button>
             
         </div>
         
         <div id="displayDiv">
-            
+            <table>
+                <tbody>
+                </tbody>
+            </table>
         </div>
         <button id="answerChk" onclick="answerChk()" >정답확인</button>
+        <br />
     </body>
     <script>
 
-        // $.getJSON("data.json", function(data){
-        //     console.log(data); // Prints: Harry
-        //     // console.log(data.age); // Prints: 14
-        //     console.log(_.uniqBy(data, 'category'));
-        //     console.log(_.shuffle(data));
+        let problem = [];
+        var randomSt;
 
-        // }).fail(function(){
-        //     console.log("An error has occurred.");
-        // });
+        $.getJSON("data.json", function(data){
+            problem = data;
+            console.log(data); 
+            console.log(_.uniqBy(data, 'category'));
+            console.log(_.shuffle(data));
+
+            $('#problemSolving').css('background-color','rgb(231, 222, 253)');
+            $('#problemSolving').css('border','1px solid rgb(252, 233, 246)');
+            $('#problemSolving').text('문제출제');
+
+        }).fail(function(){
+            console.log("An error has occurred.");
+        });
 
 
 
 
-        var reader = new FileReader();
-        var excelFileData = null;
+        // var reader = new FileReader();
+        // var excelFileData = null;
 
-        var inputElement = document.getElementById('inputExcelRead');
-        inputElement.addEventListener('change', function() {
-            reader.readAsArrayBuffer(event.target.files[0]);
-        }, false);
+        // var inputElement = document.getElementById('inputExcelRead');
+        // inputElement.addEventListener('change', function() {
+        //     reader.readAsArrayBuffer(event.target.files[0]);
+        // }, false);
 
-        reader.onload = function (e) {
-            var data = e.target.result;
-            var workbook = XLSX.read(data, { type: "array" });
+        // reader.onload = function (e) {
+        //     var data = e.target.result;
+        //     var workbook = XLSX.read(data, { type: "array" });
 
-            var sheetName = workbook.SheetNames;
-            var sheet = workbook.Sheets[sheetName];
-            excelFileData = XLSX.utils.sheet_to_html(sheet);
+        //     var sheetName = workbook.SheetNames;
+        //     var sheet = workbook.Sheets[sheetName];
+        //     excelFileData = XLSX.utils.sheet_to_html(sheet);
             
-            var element = document.getElementById('displayDiv');
-            element.innerHTML = excelFileData;
+        //     var element = document.getElementById('displayDiv');
+        //     element.innerHTML = excelFileData;
 
-            var Len = (workbook.Strings.length)/3 +2
+        //     var Len = (workbook.Strings.length)/3 +2
 
-            for (var i=2; i<Len+5; i++) {
-                var min = Math.ceil(1);
-                var max = Math.floor(4);
-                var random = Math.floor(Math.random() * (max - min)) + min;
+        //     for (var i=2; i<Len+5; i++) {
+        //         var min = Math.ceil(1);
+        //         var max = Math.floor(4);
+        //         var random = Math.floor(Math.random() * (max - min)) + min;
                 
-                if(random === 1) {
-                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-A'+i)[0].attributes[2].nodeValue +'" >')
-                }else if(random === 2) {
-                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-B'+i)[0].attributes[2].nodeValue +'" >')
-                }else if(random === 3) {
-                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-C'+i)[0].attributes[2].nodeValue +'" >')
-                }
-            }
+        //         if(random === 1) {
+        //             $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-A'+i)[0].attributes[2].nodeValue +'" >')
+        //         }else if(random === 2) {
+        //             $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-B'+i)[0].attributes[2].nodeValue +'" >')
+        //         }else if(random === 3) {
+        //             $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-C'+i)[0].attributes[2].nodeValue +'" >')
+        //         }
+        //     }
 
-            parseInt($('#testCount').text((workbook.Strings.length)/3 + 6))
+        //     parseInt($('#testCount').text((workbook.Strings.length)/3 + 6))
             
-            $('#sjs-A1').css('font-weight', 600);
-            $('#sjs-B1').css('font-weight', 600);
-            $('#sjs-C1').css('font-weight', 600);
+        //     $('#sjs-A1').css('font-weight', 600);
+        //     $('#sjs-B1').css('font-weight', 600);
+        //     $('#sjs-C1').css('font-weight', 600);
 
-            $('#sjs-A1').css('padding-top', '6px');
-            $('#sjs-B1').css('padding-top', '6px');
-            $('#sjs-C1').css('padding-top', '6px');
+        //     $('#sjs-A1').css('padding-top', '6px');
+        //     $('#sjs-B1').css('padding-top', '6px');
+        //     $('#sjs-C1').css('padding-top', '6px');
 
-            $('#sjs-A1').css('padding-bottom', '6px');
-            $('#sjs-B1').css('padding-bottom', '6px');
-            $('#sjs-C1').css('padding-bottom', '6px');
+        //     $('#sjs-A1').css('padding-bottom', '6px');
+        //     $('#sjs-B1').css('padding-bottom', '6px');
+        //     $('#sjs-C1').css('padding-bottom', '6px');
 
-            $('#sjs-A1').css('padding-left', '3px');
-            $('#sjs-B1').css('padding-left', '3px');
-            $('#sjs-C1').css('padding-left', '3px');
+        //     $('#sjs-A1').css('padding-left', '3px');
+        //     $('#sjs-B1').css('padding-left', '3px');
+        //     $('#sjs-C1').css('padding-left', '3px');
 
-            $('#sjs-A1').css('background-color', 'rgb(231, 222, 253)');
-            $('#sjs-B1').css('background-color', 'rgb(231, 222, 253)');
-            $('#sjs-C1').css('background-color', 'rgb(231, 222, 253)');
-        };
+        //     $('#sjs-A1').css('background-color', 'rgb(231, 222, 253)');
+        //     $('#sjs-B1').css('background-color', 'rgb(231, 222, 253)');
+        //     $('#sjs-C1').css('background-color', 'rgb(231, 222, 253)');
+        // };
 
     function answerChk() {
         $('#testTrue').text(0)
         $('#testFalse').text(0)
-        for(var i=2; i< parseInt($('#testCount').text()) + 2;i++) {
+        for(var i=2; i< problem.length;i++) {
 
             var exvar = $('#'+i).val();
             var anvar = $('#'+i)[0].className;
@@ -272,7 +291,61 @@
 
     //문제출제
     function problemSolving() {
-        alert( arr.map(x => console.log(x)));
+        console.log(arr.length)
+        $('tr').remove()
+        if(arr.length === 0) {
+            if (confirm("전체항목을 선택하여 문제를 출제하시겠습니까?") == true){    //확인
+                console.log('randomSt',randomSt)
+                if(randomSt === 1) {
+                   problem = _.shuffle(problem);
+                }
+                console.log('problem.length',problem.length)
+                $('#testCount').text(problem.length-2)
+                $('tbody').append(
+                    '<tr><td t="s" id="sjs-A1" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B1" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C1" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
+                )    
+                for(var i=2; i<problem.length; i++) {
+                    $('tbody').append(
+                        '<tr>'+
+                            '<td id="sjs-A'+i+'">'+problem[i].englishWord+'</td>'+
+                            '<td id="sjs-B'+i+'">'+problem[i].newWord+'</td>'+
+                            '<td id="sjs-C'+i+'">'+problem[i].oldWord+'</td>'+
+                        '</tr>'
+                    )    
+                }
+
+                for (var i=2; i<problem.length; i++) {
+                var min = Math.ceil(1);
+                var max = Math.floor(4);
+                var random = Math.floor(Math.random() * (max - min)) + min;
+                
+                if(random === 1) {
+                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
+                }else if(random === 2) {
+                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
+                }else if(random === 3) {
+                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
+                }
+            }
+                
+            }else {
+                return;
+            }
+        }else {
+            console.log(_.sortBy(arr, 'num'));
+        }
+        // arr.map(x => console.log(arr.length));
+    }
+
+    function randomClick() {
+
+        if(randomSt === 1) {
+            randomSt = 0;
+            $('.randomBtn').css('background-color', 'rgb(246, 243, 252)');
+        }else {
+            randomSt = 1;
+            $('.randomBtn').css('background-color', 'rgb(231, 222, 253)');
+        }
     }
 
     //몸통뼈 (경추부)
