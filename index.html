@@ -43,6 +43,7 @@
             border: 1px solid gray;
             width: 100%;
             border-spacing: 0px;
+            font-size: 12px;
         }
 
         table th{
@@ -53,6 +54,7 @@
             border: 1px solid rgb(213, 213, 213);
             font-size: 15px;
             color: rgb(42, 42, 42);
+            font-size: 12px;
         }
 
         table td input{
@@ -61,6 +63,7 @@
             font-size: 15px;
             border: none;
             color: black;
+            font-size: 12px;
             
         }
 
@@ -88,6 +91,8 @@
             margin-bottom: 4px;
             border-radius: 3px;
             box-shadow: 2px 1px 1px rgb(224, 224, 224);
+            color: rgb(73, 73, 73);
+
         }
 
         #problemSolving{
@@ -119,7 +124,7 @@
         
     </style>
     <body>
-        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.3</h2>
+        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.4</h2>
         <div>
             <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
         </div>
@@ -155,26 +160,26 @@
                 <button class="partBtn14" onclick="part14Select()">하지뼈6(발목및손가락)</button>
             </div>
             <br />
-            <button id="problemSolving" onclick="problemSolving()">문제출제</button>
+            <button id="problemSolving" onclick="problemSolving()" >문제출제</button>
             
         </div>
         
         <div id="displayDiv">
             
         </div>
-        <button id="answerChk" onclick="answerChk()">정답확인</button>
+        <button id="answerChk" onclick="answerChk()" >정답확인</button>
     </body>
     <script>
 
-        $.getJSON("data.json", function(data){
-            console.log(data); // Prints: Harry
-            // console.log(data.age); // Prints: 14
-            console.log(_.uniqBy(data, 'category'));
-            console.log(_.shuffle(data));
+        // $.getJSON("data.json", function(data){
+        //     console.log(data); // Prints: Harry
+        //     // console.log(data.age); // Prints: 14
+        //     console.log(_.uniqBy(data, 'category'));
+        //     console.log(_.shuffle(data));
 
-        }).fail(function(){
-            console.log("An error has occurred.");
-        });
+        // }).fail(function(){
+        //     console.log("An error has occurred.");
+        // });
 
 
 
@@ -198,7 +203,7 @@
             var element = document.getElementById('displayDiv');
             element.innerHTML = excelFileData;
 
-            var Len = (workbook.Strings.length)/3 +4
+            var Len = (workbook.Strings.length)/3 +2
 
             for (var i=2; i<Len+5; i++) {
                 var min = Math.ceil(1);
@@ -206,15 +211,15 @@
                 var random = Math.floor(Math.random() * (max - min)) + min;
                 
                 if(random === 1) {
-                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-A'+i)[0].attributes[2].nodeValue +'">')
+                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-A'+i)[0].attributes[2].nodeValue +'" >')
                 }else if(random === 2) {
-                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-B'+i)[0].attributes[2].nodeValue +'">')
+                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-B'+i)[0].attributes[2].nodeValue +'" >')
                 }else if(random === 3) {
-                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-C'+i)[0].attributes[2].nodeValue +'">')
+                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ $('#sjs-C'+i)[0].attributes[2].nodeValue +'" >')
                 }
             }
 
-            parseInt($('#testCount').text((workbook.Strings.length)/3 + 8))
+            parseInt($('#testCount').text((workbook.Strings.length)/3 + 6))
             
             $('#sjs-A1').css('font-weight', 600);
             $('#sjs-B1').css('font-weight', 600);
@@ -242,7 +247,10 @@
         $('#testFalse').text(0)
         for(var i=2; i< parseInt($('#testCount').text()) + 2;i++) {
 
-            if($('#'+i).val()  === $('#'+i)[0].className) {
+            var exvar = $('#'+i).val();
+            var anvar = $('#'+i)[0].className;
+            // if($('#'+i).val()  === $('#'+i)[0].className) {
+            if(exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) {
                 $('#'+i).css('color','blue')
                
                 $('#testTrue').text(parseInt($('#testTrue').text())+1)
@@ -256,6 +264,10 @@
             }     
         }
         alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
+    }
+
+    function onDBClick() {
+        alert(this)
     }
 
     //문제출제
