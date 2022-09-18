@@ -164,8 +164,8 @@
             <br />
             <div style="width: 100%; text-align: center; padding: 0 auto;">
                 <button class="randomBtn" onclick="randomClick()" >랜덤섞기</button>
-                <button class="lev1Btn" >레벨1</button>
-                <button class="lev2Btn" >레벨2</button>
+                <!-- <button class="lev1Btn" onclick="lev1St()" >레벨1 (빈칸1개)</button> -->
+                <button class="lev2Btn" onclick="lev2St()" >레벨2 (빈칸2개-IMG)</button>
             </div>
 
             <br />
@@ -186,6 +186,7 @@
 
         let problem = [];
         var randomSt;
+        var levSt = 0;
 
         $.getJSON("data.json", function(data){
             problem = data;
@@ -200,6 +201,20 @@
         }).fail(function(){
             console.log("An error has occurred.");
         });
+
+        let randomIndexArray = []
+        
+        for (i=0; i<2; i++) {
+            randomNum = Math.floor(Math.random() * 4)
+            if (randomNum !== 0 && randomIndexArray.indexOf(randomNum) === -1) {
+                randomIndexArray.push(randomNum)
+            } else {
+                i--
+            }
+        }
+        console.log('randomIndexArray',randomIndexArray,randomIndexArray.length) 
+        console.log('randomIndexArray',randomIndexArray[0]) 
+        console.log('randomIndexArray',randomIndexArray[1]) 
 
 
 
@@ -269,19 +284,63 @@
 
             var exvar = $('#'+i).val();
             var anvar = $('#'+i)[0].className;
+
+            
             // if($('#'+i).val()  === $('#'+i)[0].className) {
-            if(exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) {
-                $('#'+i).css('color','blue')
+            if(levSt === 0) {
+                if(exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) {
+                    $('#'+i).css('color','blue')
                
-                $('#testTrue').text(parseInt($('#testTrue').text())+1)
-            }else {
-                $('#'+i).css('color','red')
-                if($('#'+i).val().indexOf('/') == -1) {
-                    $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)
+                    $('#testTrue').text(parseInt($('#testTrue').text())+1)
+                }else {
+                    $('#'+i).css('color','red')
+                    if($('#'+i).val().indexOf('/') == -1) {
+                        $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)
+                    }
+                    
+                    $('#testFalse').text(parseInt($('#testFalse').text())+1)
                 }
-                
-                $('#testFalse').text(parseInt($('#testFalse').text())+1)
-            }     
+            }else {
+                console.log('lev2answerChk')
+                if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ',''))) {
+                    $('#'+i).css('color','blue')
+                    $('#'+i+'-1').css('color','blue')
+               
+                    $('#testTrue').text(parseInt($('#testTrue').text())+1)
+                }else {
+                    //어쨋든 틀림 ㅡㅠㅡ
+                    if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  !== $('#'+i+'-1')[0].className.replaceAll(' ','')) ) {
+                        $('#'+i).css('color','blue')
+                        $('#'+i+'-1').css('color','red')
+                        if($('#'+i+'-1').val().indexOf('/') == -1) {
+                            $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)                            
+                        }
+                        if($('#'+i).val().indexOf('/') !== -1) {
+                            $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                        }
+                    }else if($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ','') && (exvar.replaceAll(' ','')  !== anvar.replaceAll(' ',''))) {
+                        $('#'+i+'-1').css('color','blue')
+                        $('#'+i).css('color','red')
+                        if($('#'+i).val().indexOf('/') == -1) {
+                            $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                        }
+                        if($('#'+i+'-1').val().indexOf('/') !== -1) {
+                            $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)                            
+                        }
+                    }else {
+                        $('#'+i).css('color','red')
+                        $('#'+i+'-1').css('color','red')
+                        if(($('#'+i).val().indexOf('/') == -1) || ($('#'+i+'-1').val().indexOf('/') == -1)) {
+                            $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                            $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)
+                        }
+                    }
+                    
+                    
+                    $('#testFalse').text(parseInt($('#testFalse').text())+1)
+                }
+            }
+                 
         }
         alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
     }
@@ -314,20 +373,59 @@
                         '</tr>'
                     )    
                 }
-
-                for (var i=2; i<problem.length; i++) {
-                var min = Math.ceil(1);
-                var max = Math.floor(4);
-                var random = Math.floor(Math.random() * (max - min)) + min;
                 
-                if(random === 1) {
-                    $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
-                }else if(random === 2) {
-                    $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
-                }else if(random === 3) {
-                    $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
+                //랜덤자리수 뽑기
+                
+                
+        
+                if(levSt === 0) {
+                console.log('레벨1실행')
+                    
+                    for (var i=2; i<problem.length; i++) {
+                        var min = Math.ceil(1);
+                        var max = Math.floor(4);
+                        var random = Math.floor(Math.random() * (max - min)) + min;
+                        // console.log('random',random)
+                        if(random === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
+                        }else if(random === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
+                        }else if(random === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
+                        }
+                    }
+                }else if(levSt === 2) {
+                console.log('레벨2실행')
+
+                    let randomIndexArray = [{first:1,second:2},{first:1,second:3},{first:2,second:3},]
+                    
+                        for (var i=2; i<problem.length; i++) {
+                            var min = Math.ceil(0);
+                            var max = Math.floor(3);
+                            var random = Math.floor(Math.random() * (max - min)) + min;
+                            console.log('random',randomIndexArray[random])
+                            if(randomIndexArray[random].first === 1) {
+                                $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
+                            }else if(randomIndexArray[random].first === 2) {
+                                $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
+                            }else if(randomIndexArray[random].first === 3) {
+                                $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
+                            }
+
+                            if(randomIndexArray[random].second === 1) {
+                                $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].englishWord +'" >')
+                            }else if(randomIndexArray[random].second === 2) {
+                                $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].newWord +'" >')
+                            }else if(randomIndexArray[random].second === 3) {
+                                $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].oldWord +'" >')
+                            }
+                            
+                        }
+                    
+                    
                 }
-            }
+                
+                
                 
             }else {
                 return;
@@ -348,6 +446,35 @@
             $('.randomBtn').css('background-color', 'rgb(231, 222, 253)');
         }
     }
+
+    function lev1St() {
+        if(levSt === 1) {
+            levSt = 1;
+            $('.lev1Btn').css('background-color', 'rgb(246, 243, 252)');
+            console.log('levSt',levSt);
+
+        }else if(levSt === 2) {
+            levSt = 2;
+            $('.lev1Btn').css('background-color', 'rgb(231, 222, 253)');
+            console.log('levSt',levSt);
+        } else {
+            levSt = 2;
+            $('.lev1Btn').css('background-color', 'rgb(231, 222, 253)');
+            console.log('levSt',levSt);
+        }
+    }    
+
+    function lev2St() {
+        if(levSt === 2) {
+            levSt = 0;
+            $('.lev2Btn').css('background-color', 'rgb(246, 243, 252)');
+            console.log('levSt',levSt);
+        } else {
+            levSt = 2;
+            $('.lev2Btn').css('background-color', 'rgb(231, 222, 253)');
+            console.log('levSt',levSt);
+        }
+    } 
 
     //몸통뼈 (경추부)
     const arr = [];
