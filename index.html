@@ -122,10 +122,73 @@
             box-shadow: 2px 1px 1px rgb(224, 224, 224);
         }
 
+        .sjs-A{
+            width: 50%;
+        }
+        .sjs-B{
+            width: 25%;
+        }
+        .sjs-C{
+            width: 25%;
+        }
+
+        /* Popup container */
+        .popup {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        }
+
+        /* The actual popup (appears on top) */
+        .popup .popuptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class when clicking on the popup container (hide and show the popup) */
+        .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+        }
+
+        @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity:1 ;}
+        }
+
         
     </style>
     <body>
-        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.5</h2>
+        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.6</h2>
         <div>
             <!-- 기능해제 -->
             <!-- <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> -->
@@ -178,15 +241,28 @@
                 <tbody>
                 </tbody>
             </table>
+
+        </div>
+        <div class="popup" onclick="myFunction()">Click me!
+            <!-- <img id="myPopup" class="popuptext" src="/img/coccyx.jpeg" style="width: 60%; height: 60%;"> -->
+            <div class="popuptext" id="myPopup">~
+                <img src="/img/coccyx.jpeg" style="width: 60%; height: 60%;">
+            </div>
         </div>
         <button id="answerChk" onclick="answerChk()" >정답확인</button>
         <br />
     </body>
     <script>
+        
 
         let problem = [];
         var randomSt;
         var levSt = 0;
+
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }  
 
         $.getJSON("data.json", function(data){
             problem = data;
@@ -276,6 +352,7 @@
         //     $('#sjs-B1').css('background-color', 'rgb(231, 222, 253)');
         //     $('#sjs-C1').css('background-color', 'rgb(231, 222, 253)');
         // };
+          
 
     function answerChk() {
         $('#testTrue').text(0)
@@ -367,10 +444,20 @@
                 for(var i=2; i<problem.length; i++) {
                     $('tbody').append(
                         '<tr>'+
-                            '<td id="sjs-A'+i+'">'+problem[i].englishWord+'</td>'+
-                            '<td id="sjs-B'+i+'">'+problem[i].newWord+'</td>'+
-                            '<td id="sjs-C'+i+'">'+problem[i].oldWord+'</td>'+
+                            '<td id="sjs-A'+i+'" class="sjs-A">' +problem[i].englishWord+'</td>'+
+                            '<td id="sjs-B'+i+'" class="sjs-B">' +problem[i].newWord+'</td>'+
+                            '<td id="sjs-C'+i+'" class="sjs-C">'+problem[i].oldWord+'</td>'+
+                            // '<td id="sjs-C'+i+'"><button>I</button></td>'+
                         '</tr>'
+                        // '<tr>'+
+                        //     '<td>'+
+                        //     '<div class="popup" onclick="myFunction()">Click me!'+
+                        //         '<div class="popuptext" id="myPopup">'+
+                        //             '<img src="/img/coccyx.jpeg" style="width: 60%; height: 60%;">'+
+                        //         '</div>'+
+                        //     '</div>'+
+                        //     '<td>'+
+                        // '</tr>'
                     )    
                 }
                 
