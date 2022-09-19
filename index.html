@@ -16,6 +16,10 @@
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
         <script type="text/javascript" src="data.json"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5505354959330782" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- <link rel="stylesheet" href="/Test.css"> -->
     </head>
     <style>
@@ -184,10 +188,22 @@
         to {opacity:1 ;}
         }
 
+        .btn-primary{
+            background-color: white;
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgb(212, 196, 253);
+        }
+
+        .btn-primary:hover{
+            background-color: rgb(231, 222, 253);
+            border: 1px solid rgb(212, 196, 253);
+        }
+
         
     </style>
     <body>
-        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.6</h2>
+        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.7</h2>
         <div>
             <!-- 기능해제 -->
             <!-- <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> -->
@@ -229,12 +245,39 @@
                 <!-- <button class="lev1Btn" onclick="lev1St()" >레벨1 (빈칸1개)</button> -->
                 <button class="lev2Btn" onclick="lev2St()" >레벨2 (빈칸2개-IMG)</button>
             </div>
-
+            <!-- <div id="axis" onclick="myFunction()">IIIIII</div> -->
             <br />
             <button id="problemSolving" onclick="problemSolving()" >문제준비중..</button>
             
         </div>
+        <!-- <button onclick="showImg('axis')">1</button> -->
         
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+          </button> -->
+          
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color: white;">
+                  <h5 class="modal-title" id="exampleModalLongTitle" style="font-size:13px;">필라테스 단어테스트</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div> 
+                <div class="modal-body" style="background-color: black; text-align: center;">
+                    <img id="prdImg" src="/img/rib cage.jpeg" style="width: 60%; height: 60%;">
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          
+
         <div id="displayDiv">
             <table>
                 <tbody>
@@ -242,12 +285,14 @@
             </table>
 
         </div>
-        <div class="popup" onclick="myFunction()">Click me!
-            <!-- <img id="myPopup" class="popuptext" src="/img/coccyx.jpeg" style="width: 60%; height: 60%;"> -->
+       <!--  <div class="popup" onclick="myFunction()">Click me!
+            <img id="myPopup" class="popuptext" src="/img/coccyx.jpeg" style="width: 60%; height: 60%;">
             <div class="popuptext" id="myPopup">~
-                <img src="/img/coccyx.jpeg" style="width: 60%; height: 60%;">
+                
             </div>
-        </div>
+        </div> -->
+
+        
         <button id="answerChk" onclick="answerChk()" >정답확인</button>
         <br />
     </body>
@@ -258,16 +303,17 @@
         var randomSt;
         var levSt = 0;
 
-        function myFunction() {
+        function myFunction(param) {
+            console.log('myFunction Click',param)
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
         }  
 
         $.getJSON("data.json", function(data){
             problem = data;
-            console.log(data); 
-            console.log(_.uniqBy(data, 'category'));
-            console.log(_.shuffle(data));
+            // console.log(data); 
+            // console.log(_.uniqBy(data, 'category'));
+            // console.log(_.shuffle(data));
 
             $('#problemSolving').css('background-color','rgb(231, 222, 253)');
             $('#problemSolving').css('border','1px solid rgb(252, 233, 246)');
@@ -287,12 +333,6 @@
                 i--
             }
         }
-        console.log('randomIndexArray',randomIndexArray,randomIndexArray.length) 
-        console.log('randomIndexArray',randomIndexArray[0]) 
-        console.log('randomIndexArray',randomIndexArray[1]) 
-
-
-
 
         // var reader = new FileReader();
         // var excelFileData = null;
@@ -377,7 +417,6 @@
                     $('#testFalse').text(parseInt($('#testFalse').text())+1)
                 }
             }else {
-                console.log('lev2answerChk')
                 if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ',''))) {
                     $('#'+i).css('color','blue')
                     $('#'+i+'-1').css('color','blue')
@@ -411,8 +450,7 @@
                             $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)
                         }
                     }
-                    
-                    
+                                   
                     $('#testFalse').text(parseInt($('#testFalse').text())+1)
                 }
             }
@@ -421,6 +459,25 @@
         alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
     }
 
+    // function showImg(param,e) {
+
+    //     // console.log('showImg1',param)
+    //     // console.log('showImg2',param[0])
+    //     // console.log('showImg3',param[1].id)
+    //     // 
+    // }
+
+    $(document).ready(function () {
+    $(document).on('click', "td button", function (e) {
+
+
+        e.preventDefault();
+        id = $(this).attr('id')
+
+        $("#prdImg").attr("src", '/img/'+id+'.jpeg');
+        // alert(id);
+        });
+    });
 
     //문제출제
     function problemSolving() {
@@ -432,38 +489,40 @@
                 if(randomSt === 1) {
                    problem = _.shuffle(problem);
                 }
-                console.log('problem.length',problem.length)
+                // console.log('problem.length',problem.length)
                 $('#testCount').text(problem.length-2)
                 $('tbody').append(
                     '<tr><td t="s" id="sjs-A1" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B1" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C1" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
                 )    
                 for(var i=2; i<problem.length; i++) {
-                    $('tbody').append(
+                    var param = problem[i].englishWord;
+                    if(levSt === 2) {
+                        $('tbody').append(
+                            '<tr>'+
+                                '<td id="sjs-A'+i+'" class="sjs-A">' +problem[i].englishWord+'</td>'+
+                                '<td id="sjs-B'+i+'" class="sjs-B">' +problem[i].newWord+'</td>'+
+                                '<td id="sjs-C'+i+'" class="sjs-C">'+problem[i].oldWord+'</td>'+
+                                '<td id="sjs-D'+i+'"><button id="' +problem[i].englishWord+'" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >'+
+                                    '</button></td>'+
+                            '</tr>'
+                        )
+                    }else {
+                        $('tbody').append(
                         '<tr>'+
                             '<td id="sjs-A'+i+'" class="sjs-A">' +problem[i].englishWord+'</td>'+
                             '<td id="sjs-B'+i+'" class="sjs-B">' +problem[i].newWord+'</td>'+
                             '<td id="sjs-C'+i+'" class="sjs-C">'+problem[i].oldWord+'</td>'+
-                            // '<td id="sjs-C'+i+'"><button>I</button></td>'+
                         '</tr>'
-                        // '<tr>'+
-                        //     '<td>'+
-                        //     '<div class="popup" onclick="myFunction()">Click me!'+
-                        //         '<div class="popuptext" id="myPopup">'+
-                        //             '<img src="/img/coccyx.jpeg" style="width: 60%; height: 60%;">'+
-                        //         '</div>'+
-                        //     '</div>'+
-                        //     '<td>'+
-                        // '</tr>'
-                    )    
+                        )
+                    }
+                        
                 }
                 
                 //랜덤자리수 뽑기
                 
                 
         
-                if(levSt === 0) {
-                console.log('레벨1실행')
-                    
+                if(levSt === 0) {         
                     for (var i=2; i<problem.length; i++) {
                         var min = Math.ceil(1);
                         var max = Math.floor(4);
@@ -478,43 +537,36 @@
                         }
                     }
                 }else if(levSt === 2) {
-                console.log('레벨2실행')
-
+                
                     let randomIndexArray = [{first:1,second:2},{first:1,second:3},{first:2,second:3},]
                     
-                        for (var i=2; i<problem.length; i++) {
-                            var min = Math.ceil(0);
-                            var max = Math.floor(3);
-                            var random = Math.floor(Math.random() * (max - min)) + min;
-                            console.log('random',randomIndexArray[random])
-                            if(randomIndexArray[random].first === 1) {
-                                $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
-                            }else if(randomIndexArray[random].first === 2) {
-                                $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
-                            }else if(randomIndexArray[random].first === 3) {
-                                $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
-                            }
-
-                            if(randomIndexArray[random].second === 1) {
-                                $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].englishWord +'" >')
-                            }else if(randomIndexArray[random].second === 2) {
-                                $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].newWord +'" >')
-                            }else if(randomIndexArray[random].second === 3) {
-                                $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].oldWord +'" >')
-                            }
-                            
+                    for (var i=2; i<problem.length; i++) {
+                        var min = Math.ceil(0);
+                        var max = Math.floor(3);
+                        var random = Math.floor(Math.random() * (max - min)) + min;
+                        // console.log('random',randomIndexArray[random])
+                        if(randomIndexArray[random].first === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].englishWord +'" >')
+                        }else if(randomIndexArray[random].first === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].newWord +'" >')
+                        }else if(randomIndexArray[random].first === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ problem[i].oldWord +'" >')
                         }
-                    
-                    
-                }
-                
-                
-                
+
+                        if(randomIndexArray[random].second === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].englishWord +'" >')
+                        }else if(randomIndexArray[random].second === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].newWord +'" >')
+                        }else if(randomIndexArray[random].second === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ problem[i].oldWord +'" >')
+                        }              
+                    }   
+                }             
             }else {
                 return;
             }
         }else {
-            console.log(_.sortBy(arr, 'num'));
+            // console.log(_.sortBy(arr, 'num'));
         }
         // arr.map(x => console.log(arr.length));
     }
