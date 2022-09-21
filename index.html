@@ -300,6 +300,7 @@
         
 
         let problem = [];
+        let selectProblem = [];
         var randomSt;
         var levSt = 0;
 
@@ -396,17 +397,18 @@
     function answerChk() {
         $('#testTrue').text(0)
         $('#testFalse').text(0)
-        for(var i=2; i< problem.length;i++) {
+        if(arr.length !== 0) {
+            for(var i=2; i< selectProblem.length;i++) {
 
             var exvar = $('#'+i).val();
             var anvar = $('#'+i)[0].className;
 
-            
+
             // if($('#'+i).val()  === $('#'+i)[0].className) {
             if(levSt === 0) {
                 if(exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) {
                     $('#'+i).css('color','blue')
-               
+
                     $('#testTrue').text(parseInt($('#testTrue').text())+1)
                 }else {
                     $('#'+i).css('color','red')
@@ -420,7 +422,7 @@
                 if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ',''))) {
                     $('#'+i).css('color','blue')
                     $('#'+i+'-1').css('color','blue')
-               
+
                     $('#testTrue').text(parseInt($('#testTrue').text())+1)
                 }else {
                     //어쨋든 틀림 ㅡㅠㅡ
@@ -450,12 +452,75 @@
                             $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)
                         }
                     }
-                                   
+                                
                     $('#testFalse').text(parseInt($('#testFalse').text())+1)
                 }
             }
-                 
+
+            }
+        }else {
+            for(var i=2; i< problem.length;i++) {
+
+                var exvar = $('#'+i).val();
+                var anvar = $('#'+i)[0].className;
+
+
+                // if($('#'+i).val()  === $('#'+i)[0].className) {
+                if(levSt === 0) {
+                    if(exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) {
+                        $('#'+i).css('color','blue')
+                
+                        $('#testTrue').text(parseInt($('#testTrue').text())+1)
+                    }else {
+                        $('#'+i).css('color','red')
+                        if($('#'+i).val().indexOf('/') == -1) {
+                            $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)
+                        }
+                        
+                        $('#testFalse').text(parseInt($('#testFalse').text())+1)
+                    }
+                }else {
+                    if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ',''))) {
+                        $('#'+i).css('color','blue')
+                        $('#'+i+'-1').css('color','blue')
+                
+                        $('#testTrue').text(parseInt($('#testTrue').text())+1)
+                    }else {
+                        //어쨋든 틀림 ㅡㅠㅡ
+                        if((exvar.replaceAll(' ','')  === anvar.replaceAll(' ','')) && ($('#'+i+'-1').val().replaceAll(' ','')  !== $('#'+i+'-1')[0].className.replaceAll(' ','')) ) {
+                            $('#'+i).css('color','blue')
+                            $('#'+i+'-1').css('color','red')
+                            if($('#'+i+'-1').val().indexOf('/') == -1) {
+                                $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)                            
+                            }
+                            if($('#'+i).val().indexOf('/') !== -1) {
+                                $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                            }
+                        }else if($('#'+i+'-1').val().replaceAll(' ','')  === $('#'+i+'-1')[0].className.replaceAll(' ','') && (exvar.replaceAll(' ','')  !== anvar.replaceAll(' ',''))) {
+                            $('#'+i+'-1').css('color','blue')
+                            $('#'+i).css('color','red')
+                            if($('#'+i).val().indexOf('/') == -1) {
+                                $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                            }
+                            if($('#'+i+'-1').val().indexOf('/') !== -1) {
+                                $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)                            
+                            }
+                        }else {
+                            $('#'+i).css('color','red')
+                            $('#'+i+'-1').css('color','red')
+                            if(($('#'+i).val().indexOf('/') == -1) || ($('#'+i+'-1').val().indexOf('/') == -1)) {
+                                $('#'+i).val($('#'+i).val() + ' / ' + $('#'+i)[0].className)                            
+                                $('#'+i+'-1').val($('#'+i+'-1').val() + ' / ' + $('#'+i+'-1')[0].className)
+                            }
+                        }
+                                    
+                        $('#testFalse').text(parseInt($('#testFalse').text())+1)
+                    }
+                }
+                
+            }
         }
+        
         alert('정답수: ' + $('#testTrue').text()+'  오달수: ' + $('#testFalse').text(),)
     }
 
@@ -566,7 +631,7 @@
                 return;
             }
         }else {
-            let selectProblem = [];
+            
             sortArr = _.sortBy(arr, 'num');
 
             // arr.map(x => 
