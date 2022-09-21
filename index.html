@@ -203,7 +203,7 @@
         
     </style>
     <body>
-        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.7</h2>
+        <h2 style="color: rgb(60, 60, 60)">필라테스 단어 테스트 1.8</h2>
         <div>
             <!-- 기능해제 -->
             <!-- <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> -->
@@ -304,7 +304,7 @@
         var levSt = 0;
 
         function myFunction(param) {
-            console.log('myFunction Click',param)
+            // console.log('myFunction Click',param)
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
         }  
@@ -320,7 +320,7 @@
             $('#problemSolving').text('문제출제');
 
         }).fail(function(){
-            console.log("An error has occurred.");
+            // console.log("An error has occurred.");
         });
 
         let randomIndexArray = []
@@ -481,11 +481,11 @@
 
     //문제출제
     function problemSolving() {
-        console.log(arr.length)
+        // console.log(arr.length)
         $('tr').remove()
         if(arr.length === 0) {
             if (confirm("전체항목을 선택하여 문제를 출제하시겠습니까?") == true){    //확인
-                console.log('randomSt',randomSt)
+                // console.log('randomSt',randomSt)
                 if(randomSt === 1) {
                    problem = _.shuffle(problem);
                 }
@@ -566,9 +566,104 @@
                 return;
             }
         }else {
-            // console.log(_.sortBy(arr, 'num'));
+            let selectProblem = [];
+            sortArr = _.sortBy(arr, 'num');
+
+            // arr.map(x => 
+            //     // console.log(x) 
+            //     console.log(_.find(arr, {'num': 1})
+            // );
+            for (var i = 0; i < sortArr.length; i++) {
+                const selectProblemChild = _.filter(problem, {'category': sortArr[i].category});
+                for (var j = 0; j < selectProblemChild.length; j++) {
+                    selectProblem.push(selectProblemChild[j])
+                }
+            }
+
+            if (confirm("선택하신 항목의 문제를 출제하시겠습니까?😍") == true){    //확인
+                // console.log('randomSt',randomSt)
+                if(randomSt === 1) {
+                   selectProblem = _.shuffle(selectProblem);
+                }
+                // console.log('problem.length',problem.length)
+                $('#testCount').text(selectProblem.length-2)
+                $('tbody').append(
+                    '<tr><td t="s" id="sjs-A1" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B1" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C1" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
+                )    
+                for(var i=2; i<selectProblem.length; i++) {
+                    var param = selectProblem[i].englishWord;
+                    if(levSt === 2) {
+                        $('tbody').append(
+                            '<tr>'+
+                                '<td id="sjs-A'+i+'" class="sjs-A">' +selectProblem[i].englishWord+'</td>'+
+                                '<td id="sjs-B'+i+'" class="sjs-B">' +selectProblem[i].newWord+'</td>'+
+                                '<td id="sjs-C'+i+'" class="sjs-C">'+selectProblem[i].oldWord+'</td>'+
+                                '<td id="sjs-D'+i+'"><button id="' +selectProblem[i].englishWord+'" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >'+
+                                    '</button></td>'+
+                            '</tr>'
+                        )
+                    }else {
+                        $('tbody').append(
+                        '<tr>'+
+                            '<td id="sjs-A'+i+'" class="sjs-A">' +selectProblem[i].englishWord+'</td>'+
+                            '<td id="sjs-B'+i+'" class="sjs-B">' +selectProblem[i].newWord+'</td>'+
+                            '<td id="sjs-C'+i+'" class="sjs-C">'+selectProblem[i].oldWord+'</td>'+
+                        '</tr>'
+                        )
+                    }
+                        
+                }
+                
+                //랜덤자리수 뽑기
+                
+                
+        
+                if(levSt === 0) {         
+                    for (var i=2; i<selectProblem.length; i++) {
+                        var min = Math.ceil(1);
+                        var max = Math.floor(4);
+                        var random = Math.floor(Math.random() * (max - min)) + min;
+                        // console.log('random',random)
+                        if(random === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].englishWord +'" >')
+                        }else if(random === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].newWord +'" >')
+                        }else if(random === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].oldWord +'" >')
+                        }
+                    }
+                }else if(levSt === 2) {
+                
+                    let randomIndexArray = [{first:1,second:2},{first:1,second:3},{first:2,second:3},]
+                    
+                    for (var i=2; i<selectProblem.length; i++) {
+                        var min = Math.ceil(0);
+                        var max = Math.floor(3);
+                        var random = Math.floor(Math.random() * (max - min)) + min;
+                        // console.log('random',randomIndexArray[random])
+                        if(randomIndexArray[random].first === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].englishWord +'" >')
+                        }else if(randomIndexArray[random].first === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].newWord +'" >')
+                        }else if(randomIndexArray[random].first === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'" class="'+ selectProblem[i].oldWord +'" >')
+                        }
+
+                        if(randomIndexArray[random].second === 1) {
+                            $('#sjs-A'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ selectProblem[i].englishWord +'" >')
+                        }else if(randomIndexArray[random].second === 2) {
+                            $('#sjs-B'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ selectProblem[i].newWord +'" >')
+                        }else if(randomIndexArray[random].second === 3) {
+                            $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ selectProblem[i].oldWord +'" >')
+                        }              
+                    }   
+                }             
+            }else {
+                return;
+            }
+            
         }
-        // arr.map(x => console.log(arr.length));
+        // 
     }
 
     function randomClick() {
@@ -586,16 +681,16 @@
         if(levSt === 1) {
             levSt = 1;
             $('.lev1Btn').css('background-color', 'rgb(246, 243, 252)');
-            console.log('levSt',levSt);
+            // console.log('levSt',levSt);
 
         }else if(levSt === 2) {
             levSt = 2;
             $('.lev1Btn').css('background-color', 'rgb(231, 222, 253)');
-            console.log('levSt',levSt);
+            // console.log('levSt',levSt);
         } else {
             levSt = 2;
             $('.lev1Btn').css('background-color', 'rgb(231, 222, 253)');
-            console.log('levSt',levSt);
+            // console.log('levSt',levSt);
         }
     }    
 
@@ -603,11 +698,11 @@
         if(levSt === 2) {
             levSt = 0;
             $('.lev2Btn').css('background-color', 'rgb(246, 243, 252)');
-            console.log('levSt',levSt);
+            // console.log('levSt',levSt);
         } else {
             levSt = 2;
             $('.lev2Btn').css('background-color', 'rgb(231, 222, 253)');
-            console.log('levSt',levSt);
+            // console.log('levSt',levSt);
         }
     } 
 
