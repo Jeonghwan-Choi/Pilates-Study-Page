@@ -209,9 +209,12 @@
             <!-- <input type="file" id="inputExcelRead" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> -->
         </div>
         <div>
-            <a style="float: left;">문제수:</a><a id="testCount"></a><br />
-            <a style="float: left;">정답수:</a><a id="testTrue" style="color: blue;">0</a><br />
-            <a style="float: left;">오답수:</a><a id="testFalse" style="color: red;">0</a><br />
+            <tr style="width: 100%;">
+                <td style="width: 33%; color: gray;" ><a style="width: 33%; color: rgb(60, 60, 60);">문제수:</a><a id="testCount">0</a></td>
+                <td style="width: 33%; color: gray;" ><a style="width: 33%; color: rgb(60, 60, 60);">정답수:</a><a id="testTrue" style="color: blue;">0</a></td>
+                <td style="width: 33%; color: gray;" ><a style="width: 33%; color: rgb(60, 60, 60);">오답수:</a><a id="testFalse" style="color: red;">0</a></td>
+            </tr>
+
         </div>
         <br />
         <div>
@@ -398,7 +401,10 @@
         $('#testTrue').text(0)
         $('#testFalse').text(0)
         if(arr.length !== 0) {
-            for(var i=2; i< selectProblem.length;i++) {
+            
+            console.log('selectProblem.length',selectProblem.length)
+
+            for(var i=0; i< selectProblem.length;i++) {
 
             var exvar = $('#'+i).val();
             var anvar = $('#'+i)[0].className;
@@ -459,7 +465,7 @@
 
             }
         }else {
-            for(var i=2; i< problem.length;i++) {
+            for(var i=0; i< problem.length;i++) {
 
                 var exvar = $('#'+i).val();
                 var anvar = $('#'+i)[0].className;
@@ -546,6 +552,11 @@
 
     //문제출제
     function problemSolving() {
+
+        $('#testCount').text('');
+        $('#testTrue').text('');
+        $('#testFalse').text('');
+
         // console.log(arr.length)
         $('tr').remove()
         if(arr.length === 0) {
@@ -555,11 +566,11 @@
                    problem = _.shuffle(problem);
                 }
                 // console.log('problem.length',problem.length)
-                $('#testCount').text(problem.length-2)
+                $('#testCount').text(problem.length)
                 $('tbody').append(
-                    '<tr><td t="s" id="sjs-A1" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B1" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C1" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
+                    '<tr><td t="s" id="sjs-A" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
                 )    
-                for(var i=2; i<problem.length; i++) {
+                for(var i=0; i<problem.length; i++) {
                     var param = problem[i].englishWord;
                     if(levSt === 2) {
                         $('tbody').append(
@@ -588,7 +599,7 @@
                 
         
                 if(levSt === 0) {         
-                    for (var i=2; i<problem.length; i++) {
+                    for (var i=0; i<problem.length; i++) {
                         var min = Math.ceil(1);
                         var max = Math.floor(4);
                         var random = Math.floor(Math.random() * (max - min)) + min;
@@ -605,7 +616,7 @@
                 
                     let randomIndexArray = [{first:1,second:2},{first:1,second:3},{first:2,second:3},]
                     
-                    for (var i=2; i<problem.length; i++) {
+                    for (var i=0; i<problem.length; i++) {
                         var min = Math.ceil(0);
                         var max = Math.floor(3);
                         var random = Math.floor(Math.random() * (max - min)) + min;
@@ -631,7 +642,7 @@
                 return;
             }
         }else {
-            
+            selectProblem = [];
             sortArr = _.sortBy(arr, 'num');
 
             // arr.map(x => 
@@ -646,16 +657,17 @@
             }
 
             if (confirm("선택하신 항목의 문제를 출제하시겠습니까?😍") == true){    //확인
+                console.log('selectProblem',selectProblem);
                 // console.log('randomSt',randomSt)
                 if(randomSt === 1) {
                    selectProblem = _.shuffle(selectProblem);
                 }
                 // console.log('problem.length',problem.length)
-                $('#testCount').text(selectProblem.length-2)
+                $('#testCount').text(selectProblem.length)
                 $('tbody').append(
-                    '<tr><td t="s" id="sjs-A1" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B1" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C1" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
+                    '<tr><td t="s" id="sjs-A" v="englishWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">영단어</td><td t="s" id="sjs-B" v="newWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">신용어</td><td t="s" id="sjs-C" v="oldWord" style="font-weight: 600; padding-top: 6px; padding-bottom: 6px; padding-left: 3px; background-color: rgb(231, 222, 253);">구용어</td></tr>'
                 )    
-                for(var i=2; i<selectProblem.length; i++) {
+                for(var i=0; i<selectProblem.length; i++) {
                     var param = selectProblem[i].englishWord;
                     if(levSt === 2) {
                         $('tbody').append(
@@ -684,7 +696,7 @@
                 
         
                 if(levSt === 0) {         
-                    for (var i=2; i<selectProblem.length; i++) {
+                    for (var i=0; i<selectProblem.length; i++) {
                         var min = Math.ceil(1);
                         var max = Math.floor(4);
                         var random = Math.floor(Math.random() * (max - min)) + min;
@@ -701,7 +713,7 @@
                 
                     let randomIndexArray = [{first:1,second:2},{first:1,second:3},{first:2,second:3},]
                     
-                    for (var i=2; i<selectProblem.length; i++) {
+                    for (var i=0; i<selectProblem.length; i++) {
                         var min = Math.ceil(0);
                         var max = Math.floor(3);
                         var random = Math.floor(Math.random() * (max - min)) + min;
@@ -722,7 +734,7 @@
                             $('#sjs-C'+i).html('<input style="background-color:rgb(241, 241, 241);" id="'+i+'-1" class="'+ selectProblem[i].oldWord +'" >')
                         }              
                     }   
-                }             
+                }          
             }else {
                 return;
             }
